@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { useState } from 'react';
+import { RiSidebarFoldLine, RiSidebarUnfoldLine } from 'react-icons/ri';
 
 export default function SidePanel() {
   const [open, setOpen] = useState(true);
@@ -11,12 +12,23 @@ export default function SidePanel() {
         'w-[40px]': !open,
       })}
     >
-      <header
-        className="flex justify-between items-center pl-3 pt-5 pr-3 pb-6"
-        style={{ width: 'calc(100% - 45px)' }}
-      >
+      <header className="flex justify-between items-center pl-2 pt-5 pr-2 pb-6">
         <h2 className={cn({ hidden: !open })}>Console</h2>
-        {open ? <button></button> : <button></button>}
+        {open ? (
+          <button
+            onClick={() => setOpen(false)}
+            className="bg-transparent border-none p-1"
+          >
+            <RiSidebarFoldLine color="#b4b8bb" />
+          </button>
+        ) : (
+          <button
+            onClick={() => setOpen(true)}
+            className="bg-transparent border-none p-1"
+          >
+            <RiSidebarUnfoldLine color="#b4b8bb" />
+          </button>
+        )}
       </header>
     </div>
   );
